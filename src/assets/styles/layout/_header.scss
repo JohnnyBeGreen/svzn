@@ -1,0 +1,20 @@
+@import './_variables';
+@import '../abstracts/variables/colors';
+@import '../base/brakepoints';
+
+//Header
+.app-header {
+    height: $header-height;
+    box-sizing: border-box;
+    padding: 0 20px;
+    
+    background-color: map-get($colors, primary, 100);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    @include mq($from: small-phones, $until: laptops) {
+        height: $header-height-mobile;
+    }
+}

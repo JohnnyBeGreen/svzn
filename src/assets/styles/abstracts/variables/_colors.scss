@@ -1,0 +1,66 @@
+@use "sass:map";
+@use "../../base/prefix";
+
+
+$colors: (
+    bw: (
+        100: #1a1a1a,
+        90: #313131,
+        80: #484848,
+        70: #5f5f5f,
+        60: #767676,
+        50: #8d8d8d,
+        40: #a3a3a3,
+        30: #bababa,
+        20: #d1d1d1,
+        10: #e8e8e8,
+        0: #ffffff,
+    ),
+    primary: (
+        100: #4c1e87,
+        90: #5e3593,
+        80: #704b9f,
+        70: #8262ab,
+        60: #9478b7,
+        50: #a68fc3,
+        40: #b7a5cf,
+        30: #c9bcdb,
+        20: #dbd2e7,
+        10: #ede9f3,
+    ), 
+    secondary: (
+        100: #ff0098,
+        90: #ff1aa2,
+        80: #ff33ad,
+        70: #ff4db7,
+        60: #ff66c1,
+        50: #ff80cc,
+        40: #ff99d6,
+        30: #ffb3e0,
+        20: #ffccea,
+        10: #ffe6f5,
+    ), 
+    accent: (
+        100: #ffc800,
+        90: #ffce1a,
+        80: #ffd333,
+        70: #ffd94d,
+        60: #ffde66,
+        50: #ffe480,
+        40: #ffe999,
+        30: #ffefb3,
+        20: #fff4cc,
+        10: #fffae6
+    )
+);
+
+@each $color, $shades in $colors {
+    @each $property, $value in $shades {
+        .#{prefix.$prefix}-#{$color}-bg-clr--#{$property} {
+            background-color: $value
+        }
+        .#{prefix.$prefix}-#{$color}-txt-clr--#{$property} {
+            color: $value
+        }
+    }   
+};

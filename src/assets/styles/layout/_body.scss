@@ -1,0 +1,16 @@
+@import './_variables';
+@import '../abstracts/variables/colors';
+@import '../base/brakepoints';
+
+//Body
+.app-body {
+    min-height: calc(100vh - #{$header-height + $footer-height});
+    box-sizing: border-box;
+    padding: 0 20px;
+    
+    background-color: map-get($colors, bw, 10);
+    
+    @include mq($from: small-phones, $until: laptops) {
+        min-height: calc(100vh - #{$header-height-mobile + $footer-height});
+    }
+}

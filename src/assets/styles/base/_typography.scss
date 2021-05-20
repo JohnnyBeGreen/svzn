@@ -1,0 +1,122 @@
+@use "sass:map";
+@use 'sass:math';
+@use "./prefix";
+@use "../abstracts/variables/colors";
+@use "../abstracts//mixins/font-face";
+
+@include font-face.font-face("Roboto-Light", "./assets/fonts/roboto/Roboto-Light/Roboto-Light");
+@include font-face.font-face("Roboto-Regular", "./assets/fonts/roboto/Roboto-Regular/Roboto-Regular");
+@include font-face.font-face("Roboto-Medium", "./assets/fonts/roboto/Roboto-Medium/Roboto-Medium");
+@include font-face.font-face("Roboto-Bold", "./assets/fonts/roboto/Roboto-Bold/Roboto-Bold");
+
+$base-line: 1.5;
+
+$font-family: (
+    display-type: (
+        light: "Roboto-Light",
+        bold: "Roboto-Bold",
+        medium: "Roboto-Medium"
+    ),
+    text-type: (
+        regular: "Roboto-Regular",
+        medium: "Roboto-Medium"
+    )
+);
+
+$font-sizes: (
+    xxl: 2rem,
+    xl: 1.5rem,
+    lg: 1.17rem,
+    md: 1rem,
+    sm: .83rem,
+    xs: .67rem
+);
+
+$heading-sizes: (
+    h1: 4.6rem,
+    h2: 3.6rem,
+    h3: 2.8rem,
+    h4: 2.2rem,
+    h5: 1.8rem,
+    h6: 1.6rem
+);
+
+:root {    
+    font-size: 16px;
+    font-family: map-get($font-family, text-type, regular);
+    color: map-get($colors, bw, 100);
+};
+
+//links
+
+a {
+    color: map-get($colors, bw, 100);
+    text-decoration: none;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+};
+
+.#{prefix.$prefix}-link {    
+    text-decoration: underline;
+};
+
+.#{prefix.$prefix}-link_style_1 {
+    &:hover {
+        color: map-get($colors, accent, 100)
+    }
+};
+
+.#{prefix.$prefix}-link_style_2 {
+    color: map-get($colors, accent, 100);
+};
+
+//p, .paragraph
+
+p {
+    line-height: $base-line+rem;
+    // margin: 0 0 $base-line+rem 0;
+};
+
+.#{prefix.$prefix}-paragraph, .#{prefix.$prefix}-paragraph p {
+    margin-bottom: ($base-line - 0.5)+rem;
+}
+
+//h, .h
+
+@each $tag, $value in $heading-sizes {
+    #{$tag} {
+        font-size: $value;
+        font-family: map-get($font-family, display-type, light);
+        margin: 0 0 $base-line+rem 0;
+    }   
+       
+    .#{$tag} {
+        margin-bottom: math.round($value / $base-line) * ($base-line / $value)+rem;
+    }
+};
+
+//prefix-text--size, prefix-text--size--screen
+
+@each $size, $value in $font-sizes {
+    .#{prefix.$prefix}-text_#{$size} {
+        font-size: $value;
+    }    
+}; 
+
+//Lists
+.#{prefix.$prefix}-ul {
+    li {
+        margin: 0 0 ($base-line - 1)+rem 0;
+    }
+};
+
+.#{prefix.$prefix}-ul_inside {
+    list-style-position: inside;
+    padding: 0;
+};
+
+.#{prefix.$prefix}-ul_flat {
+    list-style-type: none;
+    padding: 0;
+};
