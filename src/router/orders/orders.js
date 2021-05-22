@@ -1,10 +1,10 @@
-import MainLayout from '@/components/layouts/main/MainLayout'
+import MainLayout from '@/layouts/main/MainLayout'
 
 export default [
     {
         path: '/orders',
         name: 'orders',
-        component: () => import(/* webpackChunkName: "orders" */ '@/views/orders/Orders'),
+        component: () => import(/* webpackChunkName: "orders" */ '@/views/orders/OrdersPage'),
         meta: {
           layout: MainLayout,
           requiresAuth: false
@@ -13,7 +13,7 @@ export default [
     {
         path: '/orders/:order',
         name: 'order',
-        component: () => import(/* webpackChunkName: "order" */ '@/views/orders/Order'),
+        component: () => import(/* webpackChunkName: "order" */ '@/views/orders/OrderPage'),
         meta: {
           layout: MainLayout,
           requiresAuth: false

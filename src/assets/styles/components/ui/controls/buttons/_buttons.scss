@@ -1,0 +1,36 @@
+@import '../../../../abstracts/variables/colors';
+
+.sv-button {
+    font-size: .9rem;
+}
+
+.sv-button_style-1 {
+    height: 30px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    
+    border: none;
+    border-radius: 5px;
+    
+    background-color: map-get($colors, accent, 100);
+    color: map-get($colors, primary, 100);
+    
+    font-weight: 500;
+    
+    cursor: pointer;
+    
+    transition: all .15s ease;
+    
+    &:hover {
+        background-color: map-get($colors, primary, 100);
+        color: map-get($colors, bw, 0);
+    }
+    &:active {
+        background-color: map-get($colors, primary, 70);
+    }
+}
+
+.sv-button_style-1_active {
+    background-color: map-get($colors, primary, 100);
+    color: map-get($colors, bw, 0);
+}

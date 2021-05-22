@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import AppHeader from './TheHeader'
-import AppBody from './TheBody'
-import AppFooter from './TheFooter'
+import AppHeader from './MainLayoutHeader'
+import AppBody from './MainLayoutBody'
+import AppFooter from './MainLayoutFooter'
 
 export default {
     name: 'MainLayout',
@@ -29,10 +29,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active {
   transition: opacity .25s ease-in;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 </style>

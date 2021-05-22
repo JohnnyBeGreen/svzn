@@ -1,0 +1,28 @@
+@import '../../base/brakepoints';
+
+//Basic content containers
+.sv-container {
+    width: 100%;
+}
+
+.sv-container_l {
+    
+    @include mq($from: small-phones, $until: laptops) {
+        width: 100%;
+    }
+
+    @include mq($from: laptops) {
+        max-width: 1366px;
+    }
+}
+
+.sv-container_md {
+    
+    @include mq($from: small-phones, $until: laptops) {
+        width: 100%;
+    }
+
+    @include mq($from: laptops) {
+        max-width: 1140px;
+    }
+}

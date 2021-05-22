@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import MainLayout from '@/components/layouts/main/MainLayout'
+import MainLayout from '@/layouts/main/MainLayout'
 
 export default {
   name: "App",

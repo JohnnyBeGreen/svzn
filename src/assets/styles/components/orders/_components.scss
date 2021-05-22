@@ -1,0 +1,23 @@
+@import '../../abstracts/variables/colors';
+
+.sv-cart {
+    position: relative;
+    padding: 0 10px 0 0;
+    svg {
+        color: map-get($colors, bw, 0);
+    }
+}
+.sv-cart__counter {
+    position: absolute;
+    top: -8px;
+    right: 2px;
+    min-width: 15px;
+    height: 15px;
+    padding: 0 5px;
+    border-radius: 500px;
+    background-color: map-get($colors, accent, 100);
+    span {
+        display: block;
+        font-size: .7rem;
+    }
+}
