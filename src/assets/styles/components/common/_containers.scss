@@ -5,7 +5,7 @@
     width: 100%;
 }
 
-.sv-container_l {
+.sv-container_xl {
     
     @include mq($from: small-phones, $until: laptops) {
         width: 100%;
@@ -16,7 +16,7 @@
     }
 }
 
-.sv-container_md {
+.sv-container_l {
     
     @include mq($from: small-phones, $until: laptops) {
         width: 100%;
@@ -24,5 +24,27 @@
 
     @include mq($from: laptops) {
         max-width: 1140px;
+    }
+}
+
+.sv-container_md {
+    
+    @include mq($from: small-phones, $until: laptops) {
+        width: 100%;
+    }
+
+    @include mq($from: laptops) {
+        max-width: 960px;
+    }
+}
+
+.sv-container_s {
+    
+    @include mq($from: small-phones, $until: tablets) {
+        width: 100%;
+    }
+
+    @include mq($from: tablets) {
+        max-width: 600px;
     }
 }

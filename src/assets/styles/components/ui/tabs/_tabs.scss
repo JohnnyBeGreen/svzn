@@ -1,0 +1,37 @@
+@import '../../../abstracts/variables/colors';
+
+.sv-tabs__container {
+    padding: 10px 0 0;
+}
+
+.sv-tabs__items {
+    .sv-tabs__item {
+        position: relative;
+        display: inline-flex;
+        margin-right: 40px;
+        padding-bottom: 8px;
+        border-bottom: 5px solid transparent;
+    }
+    .router-link-exact-active {
+        border-bottom: 5px solid map-get($colors, primary, 100);
+        font-weight: 600;
+    }
+    .sv-tabs__counter {
+        position: absolute;
+        top: -8px;
+        right: -15px;
+        min-width: 15px;
+        height: 15px;
+        padding: 0 5px;
+        border-radius: 500px;
+        background-color: map-get($colors, accent, 100);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+            display: block;
+            font-size: .6rem;
+            color: map-get($colors, bw, 0);
+        }
+    }
+}

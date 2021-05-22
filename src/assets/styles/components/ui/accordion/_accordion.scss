@@ -1,0 +1,32 @@
+@import '../../../abstracts/variables/colors';
+
+.sv-accordion {
+    position: relative;
+    width: 100%;
+}
+.sv-accordion__trigger {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: .9rem;
+    text-align: left;
+    border: none;
+    background-color: transparent;
+}
+.sv-accordion__content {
+    height: 0;
+    overflow: hidden;
+    transition: height .25s ease;
+}
+.sv-accordion__content__inner {
+    box-sizing: border-box;
+    // padding: 20px;
+}
+
+.sv-accordion_style-1 {
+    background-color: map-get($colors, bw, 0);
+    .sv-accordion__trigger {
+        font-size: 1.1rem;
+        color: map-get($colors, bw, 50);
+    }
+}

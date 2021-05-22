@@ -8,15 +8,17 @@ export default [
         meta: {
           layout: MainLayout,
           requiresAuth: false
-        }
-    },
-    {
-        path: '/orders/:order',
-        name: 'order',
-        component: () => import(/* webpackChunkName: "order" */ '@/views/orders/OrderPage'),
-        meta: {
-          layout: MainLayout,
-          requiresAuth: false
-        }
+        },
+        children: [
+          {
+              path: ':order',
+              name: 'order',
+              component: () => import(/* webpackChunkName: "order" */ '@/views/orders/OrderPage'),
+              meta: {
+                layout: MainLayout,
+                requiresAuth: false
+              }
+          }
+        ]
     }
 ]

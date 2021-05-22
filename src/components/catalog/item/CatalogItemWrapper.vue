@@ -1,6 +1,6 @@
 <template>
     <div class="sv-cat-item__wrapper">
-        <Item :item-data="$props.itemData" />
+        <Item :item-data="itemData" />
     </div>
 </template>
 
