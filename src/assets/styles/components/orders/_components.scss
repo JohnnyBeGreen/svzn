@@ -106,9 +106,9 @@
 
     input {
         margin: 0 10px;
-        width: 50px;
-        height: 40px;
-        border: 1px solid map-get($colors, bw, 30);
+        width: 40px;
+        height: 35px;
+        border: 1px solid map-get($colors, bw, 20);
         border-radius: 10px;
         text-align: center;
     }
@@ -120,16 +120,16 @@
         display: block;
         font-size: 1.1rem;
         font-weight: 600;
-        color: map-get($colors, bw, 100)
+        color: map-get($colors, bw, 100);
     }
 }
 
 .sv-order__item__delete {
     text-align: right;
-    cursor: pointer;
     span {
         font-size: .8rem;
-        color: map-get($colors, bw, 70)
+        color: map-get($colors, bw, 70);
+        cursor: pointer;
     }
 }
 
@@ -170,6 +170,70 @@
                 font-weight: 600;
                 font-size: 1.1rem;
             }
+        }
+    }
+}
+
+.sv-order__summary {
+
+    .sv-order__summary__title,
+    .sv-order__summary__content {
+        box-sizing: border-box;
+        padding: 10px 20px;
+    }
+
+    .sv-order__summary__title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        >span {
+            color: map-get($colors, bw, 70);
+            display: block;
+            font-size: 1.2rem;
+        }
+        
+        .sv-order__summary__edit {
+            font-size: .8rem;
+            color: map-get($colors, primary, 70);
+            cursor: pointer;
+            span:last-of-type {
+                margin-left: 5px;
+            }
+        }
+    }
+
+    .sv-order__summary__items-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        li {
+            font-size: .9rem;
+            span:last-of-type {
+                display: inline-block;
+                color: map-get($colors, bw, 40);
+                margin-left: 15px;
+            }
+        }
+        li:not(:last-of-type) {
+            margin-bottom: 10px;
+        }
+    }
+
+    .sv-order__summary__items-total {
+        box-sizing: border-box;
+        padding: 20px 0 0;
+
+        span {
+            display: inline-block;
+        }
+
+        span:first-of-type {
+            font-size: .8rem;
+        }
+
+        span:last-of-type {
+            font-weight: 600;
+            margin-left: 15px;
         }
     }
 }

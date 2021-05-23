@@ -3,11 +3,11 @@
         <section>
             <section class="sv-order__item__content">
                 <div class="sv-order__item__img">
-                    <img :src="itemData.image" :alt="itemData.name">
+                    <img :src="itemData.item.image" :alt="itemData.item.name">
                 </div>
                 <div class="sv-order__item__name">
-                    <span class="sv-order__item-category sv-text_sm">{{ itemData.category.name }}</span>
-                    <span class="sv-order__item-name">{{ itemData.full_name }}</span>
+                    <span class="sv-order__item-category sv-text_sm">{{ itemData.item.category.name }}</span>
+                    <span class="sv-order__item-name">{{ itemData.item.full_name }}</span>
                 </div>
             </section>
             
@@ -25,13 +25,16 @@
         </section>
 
         <section>
-            <div @click="deleteItem(itemIndex)" class="sv-order__item__delete"><span>Удалить</span></div>
+            <div  
+                class="sv-order__item__delete">
+                <span @click.stop="deleteItem(itemIndex)">Удалить</span>
+            </div>
         </section>
     </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
     name: 'OrderItem',
@@ -48,23 +51,28 @@ export default {
     data() {
         return {
             quantity: 1,
-            price: this.itemData.offer.price
+            price: this.itemData.item.offer.price
         }
+    },
+    computed: {
+        ...mapState('orders', [
+            'CURRENT_ORDER'
+        ])
     },
     methods: {
         ...mapActions('orders', {
-            removeItem: 'REMOVE_ITEM_CURRENT_ORDER'
+            removeItem: 'REMOVE_ITEM_CURRENT_ORDER',
+            setItemQuantity: 'SET_ITEM_QUANTITY'
         }),
         deleteItem(index) {
             this.removeItem(index)
-            this.$emit('delete', index)
         }
     },
     watch: {
         quantity: {
             handler(val) {
-                this.price = this.itemData.offer.price * val
-                this.$emit('update:price', this.price)
+                this.setItemQuantity({index: this.itemIndex, quantity: val})
+                this.price = this.itemData.item.offer.price * this.CURRENT_ORDER.items[this.itemIndex].quantity
             },
             immediate: true
         }

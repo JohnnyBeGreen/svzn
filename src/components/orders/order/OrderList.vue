@@ -1,29 +1,28 @@
 <template>
     <div class="sv-order__list">
-        <section v-if="CURRENT_ORDER.length" class="sv-order__list__items">
-            <template v-for="(item, index) in CURRENT_ORDER">
+        <section v-if="CURRENT_ORDER.items.length" class="sv-order__list__items">
+            <template v-for="(item, index) in CURRENT_ORDER.items">
                 <OrderItem 
                     :key="item.id" 
                     :itemData="item" 
-                    :itemIndex="index" 
-                    @update:price="priceList.splice(index, 1, $event)"
-                    @delete="priceList.splice(index, 1)"
+                    :itemIndex="index"
                     />
             </template>
         </section>       
 
         <section class="sv-order__list_total">
-            <span>Итого товаров {{CURRENT_ORDER.length}}</span>
+            <span>Итого товаров {{totalQuantity}}</span>
             <span>{{ totalPrice.toLocaleString('ru-RU') }} &#8381;</span>
         </section>
 
-        <section v-if="CURRENT_ORDER.length" class="sv-order__list_next">
+        <section v-if="CURRENT_ORDER.items.length" class="sv-order__list_next">
             <div>
                 <div>
                     <span>Итого к оплате</span>
                     <span>{{ totalPrice.toLocaleString('ru-RU') }} &#8381;</span>
                 </div>
-                <button 
+                <button
+                    @click="nextStep(2)" 
                     class="sv-button sv-button_style-1 sv-button_style-2">
                     {{ "продолжить оформление".toUpperCase() }}
                 </button>
@@ -33,31 +32,45 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+import { totalPriceCounter, totalQuantityCounter } from '@/mixins/total-counter'
 
 import OrderItem from './OrderItem'
 
 export default {
     name: 'OrderList',
 
+    mixins: [totalPriceCounter, totalQuantityCounter],
     components: {
         OrderItem
     },
     data() {
         return {
             totalPrice: 0,
-            priceList: []
+            totalQuantity: 0
         }
     },
     computed: {
-        ...mapState('orders', ['CURRENT_ORDER'])
+        ...mapState('orders', [
+            'CURRENT_ORDER'    
+        ])
+    },
+    mounted() {
+        this.totalPrice = this.totalPriceCounter(this.CURRENT_ORDER)
+        this.totalQuantity = this.totalQuantityCounter(this.CURRENT_ORDER)
+    },
+    methods: {
+        ...mapActions('orders', {
+            nextStep: 'CHANGE_ORDER_STEPS'
+        })
     },
     watch: {
-        priceList: {
-            handler(val) {
-                if (val.length) this.totalPrice = val.reduce((a, b) => a + b)
-                else this.totalPrice = 0
-            }
+        CURRENT_ORDER: {
+            handler() {
+                this.totalPrice = this.totalPriceCounter(this.CURRENT_ORDER)
+                this.totalQuantity = this.totalQuantityCounter(this.CURRENT_ORDER)
+            },
+            deep: true
         }
     }
 }

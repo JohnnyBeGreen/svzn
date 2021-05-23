@@ -52,7 +52,7 @@ export default {
         ...mapState('orders', ['CURRENT_ORDER'])
     },
     mounted() {
-        if (this.CURRENT_ORDER.find(orderItem => {return orderItem.id === this.itemData.id})) this.itemAdded = true
+        if (this.CURRENT_ORDER.items.find(orderItem => {return orderItem.item.id === this.itemData.id})) this.itemAdded = true
     },
     methods: {
         ...mapActions('orders', {
@@ -60,7 +60,7 @@ export default {
         }),
 
         checkAndProceed(item) {
-            const itemFound = this.CURRENT_ORDER.find(orderItem => {return orderItem.id === item.id})          
+            const itemFound = this.CURRENT_ORDER.items.find(orderItem => {return orderItem.item.id === item.id})          
 
             if (!itemFound) {
                 this.addItemToCart(item)
