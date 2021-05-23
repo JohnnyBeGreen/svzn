@@ -23,6 +23,9 @@ const mutations = {
     SET_ITEM_QUANTITY(state, payload) {
         return state.CURRENT_ORDER.items[payload.index].quantity = payload.quantity
     },
+    SET_ITEM_PERSONAL_DATA(state, personalData) {
+        return state.CURRENT_ORDER.personalData = personalData
+    },
     REMOVE_ITEM_CURRENT_ORDER(state, itemIndex) {
         return state.CURRENT_ORDER.items.splice(itemIndex, 1)
     },
@@ -37,6 +40,9 @@ const actions = {
     },
     SET_ITEM_QUANTITY({commit}, payload) {
         commit('SET_ITEM_QUANTITY', payload)
+    },
+    SET_ITEM_PERSONAL_DATA({commit}, personalData) {
+        commit('SET_ITEM_PERSONAL_DATA', personalData)
     },
     REMOVE_ITEM_CURRENT_ORDER({commit}, itemIndex) {
         commit('REMOVE_ITEM_CURRENT_ORDER', itemIndex)

@@ -15,7 +15,7 @@
             <span>{{ totalPrice.toLocaleString('ru-RU') }} &#8381;</span>
         </section>
 
-        <section v-if="CURRENT_ORDER.items.length" class="sv-order__list_next">
+        <section v-if="CURRENT_ORDER.items.length" class="sv-order__next">
             <div>
                 <div>
                     <span>Итого к оплате</span>

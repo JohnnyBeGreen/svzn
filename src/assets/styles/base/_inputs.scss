@@ -1,0 +1,43 @@
+@import '../abstracts/variables/colors';
+
+input, select, textarea {
+    outline: none;
+    border: none;
+}
+input {
+    padding: 0 10px 0 10px;
+    font-size: .9rem;
+}
+    
+//Removes placeholder on focus
+input, textarea {
+    &::-webkit-input-placeholder {
+        color: map-get($colors, bw, 30);
+        opacity: 0.8;
+    }
+    &:-moz-placeholder {
+        color: map-get($colors, bw, 30);
+        opacity: 0.8;
+    }
+    &::-moz-placeholder {
+        color: map-get($colors, bw, 30);
+        opacity: 0.8; 
+    }
+    &:-ms-input-placeholder {
+        color: map-get($colors, bw, 30);
+        opacity: 0.8;
+    }
+
+    &:focus::-webkit-input-placeholder {
+        opacity: 0;
+    }
+    &:focus:-moz-placeholder {
+        opacity: 0;
+    }
+    &:focus::-moz-placeholder {
+        opacity: 0;
+    }
+    &:focus:-ms-input-placeholder {
+        opacity: 0;
+    }
+}

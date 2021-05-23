@@ -9,7 +9,10 @@
             </div>
 
             <div class="sv-order__block">
-                <order-summary :title="step_2_title"></order-summary>
+                <order-summary :title="step_2_title" :step="2">
+                    <OrderSummaryForm v-if="ORDER_STEPS !== 2 && CURRENT_ORDER.personalData"/>
+                </order-summary>
+                <OrderForm v-if="ORDER_STEPS === 2" />
             </div>
 
             <div class="sv-order__block">
@@ -26,6 +29,8 @@ import PageTemplate from '@/components/templates/MainViewTemplate'
 import OrderList from '@/components/orders/order/OrderList'
 import OrderSummary from '@/components/orders/order/OrderSummary'
 import OrderSummaryItemsList from '@/components/orders/order/OrderSummaryItemsList'
+import OrderForm from '@/components/orders/order/OrderForm'
+import OrderSummaryForm from '@/components/orders/order/OrderSummaryForm'
 
 export default {
     name: 'OrderView',
@@ -34,7 +39,9 @@ export default {
         PageTemplate,
         OrderList,
         OrderSummary,
-        OrderSummaryItemsList
+        OrderSummaryItemsList,
+        OrderForm,
+        OrderSummaryForm
     },
     data() {
         OrderSummary

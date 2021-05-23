@@ -1,0 +1,37 @@
+@import '../../../abstracts/variables/colors';
+
+.sv-input {
+    display: block;
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid map-get($colors, bw, 40);
+}
+
+.sv-form__checkup,
+.sv-form__checkup {
+    width: 20px;
+    height: 20px;
+    &:before {
+        position: absolute;
+        content: '';
+        width: 20px;
+        height: 20px;
+        border: 2px solid map-get($colors, primary, 100);
+        background-color: map-get($colors, bw, 0);
+    }
+}
+.sv-form__checkup_active {
+    &:before {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        content: '\2714';
+        width: 20px;
+        height: 20px;
+        border: 2px solid map-get($colors, primary, 100);
+        background-color: map-get($colors, primary, 100);
+        color: map-get($colors, bw, 0);
+    }
+}
