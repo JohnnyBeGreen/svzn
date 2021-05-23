@@ -1,16 +1,17 @@
 <template>
     <page-template class="sv-container_l">
         <div class="sv-order" slot="content">
-            <accordion class="sv-accordion_style-1">
-                <span slot="title">Состав заказа</span>
+            <div class="sv-order__block">
                 <OrderList />
-            </accordion>
-            <accordion class="sv-accordion_style-1">
+            </div>
+
+            <div class="sv-order__block">
                 <span slot="title">Контактная информация</span>
-            </accordion>
-            <accordion class="sv-accordion_style-1">
+            </div>
+
+            <div class="sv-order__block">
                 <span slot="title">Способы оплаты</span>
-            </accordion>
+            </div>
         </div>
     </page-template>
 </template>

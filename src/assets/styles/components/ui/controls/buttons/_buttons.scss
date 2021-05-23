@@ -34,3 +34,8 @@
     background-color: map-get($colors, primary, 100);
     color: map-get($colors, bw, 0);
 }
+
+.sv-button_style-2 {
+    height: 40px;
+    min-width: 300px;
+}

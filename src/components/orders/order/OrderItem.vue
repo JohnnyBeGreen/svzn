@@ -25,7 +25,7 @@
         </section>
 
         <section>
-            <div @click="removeItem(itemIndex)" class="sv-order__item__delete"><span>Удалить</span></div>
+            <div @click="deleteItem(itemIndex)" class="sv-order__item__delete"><span>Удалить</span></div>
         </section>
     </div>
 </template>
@@ -54,7 +54,11 @@ export default {
     methods: {
         ...mapActions('orders', {
             removeItem: 'REMOVE_ITEM_CURRENT_ORDER'
-        })
+        }),
+        deleteItem(index) {
+            this.removeItem(index)
+            this.$emit('delete', index)
+        }
     },
     watch: {
         quantity: {
