@@ -1,6 +1,7 @@
 <template>
     <section>
-        <h3>Home Page</h3>
+        <h5>Главная</h5>
+        <p @click="$router.push('/catalog')" class="sv-text-l" style="cursor: pointer"><u>В каталог ></u></p>
     </section>
 </template>
 

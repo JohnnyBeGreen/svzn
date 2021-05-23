@@ -16,9 +16,7 @@
         </form>
         <section class="sv-order__next">
             <div>
-                <span v-if="!formValid">
-                    заполните поля формы
-                </span>
+                <span v-if="!formValid">заполните поля формы</span>
                 <button
                     @click="validateAndProceed()" 
                     class="sv-button sv-button_style-1 sv-button_style-2">
@@ -72,7 +70,7 @@ export default {
 
             for (let key in this.form) {
                 if (Object.prototype.hasOwnProperty.call(this.form, key)) {
-                    if (this.form[key] === '') valid = false
+                    if (!this.form[key]) valid = false
                 }
             }
 
@@ -81,15 +79,22 @@ export default {
             return valid
         },
         validateAndProceed() {
-            if (this.validate()) {
-                this.addPersonalData({
-                    name: this.form.name,
-                    phone: this.form.phone,
-                    email: this.form.email,
-                    accept: this.form.accept
-                })
+            if (this.validate()) {                
                 this.nextStep(3)
             }
+        }
+    },
+    watch: {
+        form: {
+            handler(val) {
+                this.addPersonalData({
+                    name: val.name,
+                    phone: val.phone,
+                    email: val.email,
+                    accept: val.accept
+                })
+            },
+            deep: true
         }
     }
 }

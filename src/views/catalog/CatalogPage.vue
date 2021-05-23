@@ -1,5 +1,7 @@
 <template>
-    <page-template class="sv-container_l" :title="pageTitle"></page-template>
+    <page-template class="sv-container_l" :title="pageTitle">
+        <p @click="$router.push('/catalog/hi-tech')" class="sv-text-l" style="cursor: pointer" slot="content"><u>Раздел HiTech ></u></p>
+    </page-template>
 </template>
 
 <script>

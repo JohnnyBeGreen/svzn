@@ -66,8 +66,16 @@ export default {
                 this.addItemToCart(item)
                 this.itemAdded = true
             } else {
-                this.$router.push('/orders')
+                this.$router.push('/orders/cart')
             }
+        }
+    },
+    watch: {
+        CURRENT_ORDER: {
+            handler() {
+                localStorage.setItem('current_order', JSON.stringify(this.CURRENT_ORDER))
+            },
+            deep: true
         }
     }
 }

@@ -50,7 +50,7 @@ export default {
     },
     data() {
         return {
-            quantity: 1,
+            quantity: 0,
             price: this.itemData.item.offer.price
         }
     },
@@ -59,13 +59,24 @@ export default {
             'CURRENT_ORDER'
         ])
     },
+    created() {
+        if (this.CURRENT_ORDER.items[this.itemIndex].quantity) {
+            this.quantity = this.CURRENT_ORDER.items[this.itemIndex].quantity
+        } else this.quantity = 1
+    },
     methods: {
         ...mapActions('orders', {
             removeItem: 'REMOVE_ITEM_CURRENT_ORDER',
-            setItemQuantity: 'SET_ITEM_QUANTITY'
+            setItemQuantity: 'SET_ITEM_QUANTITY',
+            clearCurrentOrder: 'CLEAR_CURRENT_ORDER'
         }),
         deleteItem(index) {
-            this.removeItem(index)
+            if (this.CURRENT_ORDER.items.length > 1) {
+                this.removeItem(index)
+            } else {
+                this.clearCurrentOrder()
+                this.$router.push('/catalog/hi-tech')
+            }
         }
     },
     watch: {
@@ -73,8 +84,7 @@ export default {
             handler(val) {
                 this.setItemQuantity({index: this.itemIndex, quantity: val})
                 this.price = this.itemData.item.offer.price * this.CURRENT_ORDER.items[this.itemIndex].quantity
-            },
-            immediate: true
+            }
         }
     }
 }

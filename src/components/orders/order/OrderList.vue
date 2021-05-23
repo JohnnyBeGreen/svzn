@@ -1,6 +1,6 @@
 <template>
     <div class="sv-order__list">
-        <section v-if="CURRENT_ORDER.items.length" class="sv-order__list__items">
+        <section class="sv-order__list__items">
             <template v-for="(item, index) in CURRENT_ORDER.items">
                 <OrderItem 
                     :key="item.id" 
@@ -15,7 +15,7 @@
             <span>{{ totalPrice.toLocaleString('ru-RU') }} &#8381;</span>
         </section>
 
-        <section v-if="CURRENT_ORDER.items.length" class="sv-order__next">
+        <section class="sv-order__next">
             <div>
                 <div>
                     <span>Итого к оплате</span>
@@ -61,7 +61,8 @@ export default {
     },
     methods: {
         ...mapActions('orders', {
-            nextStep: 'CHANGE_ORDER_STEPS'
+            nextStep: 'CHANGE_ORDER_STEPS',
+            saveTotalPrice: 'SET_ITEM_TOTAL_PRICE'
         })
     },
     watch: {
@@ -71,6 +72,12 @@ export default {
                 this.totalQuantity = this.totalQuantityCounter(this.CURRENT_ORDER)
             },
             deep: true
+        },
+        totalPrice: {
+            handler(val) {
+                this.saveTotalPrice(val)
+            },
+            immediate: true
         }
     }
 }

@@ -3,6 +3,7 @@
 .sv-cart {
     position: relative;
     padding: 0 10px 0 0;
+    cursor: pointer;
     svg {
         color: map-get($colors, bw, 0);
     }
@@ -269,4 +270,30 @@
             margin-left: 5px;
         }
     }
+}
+
+.sv-order__payment__items {
+    box-sizing: border-box;
+    padding: 10px 20px 20px;
+}
+.sv-order__payment__item {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 0 5px;
+    span {
+        display: block;
+        font-size: .9rem;
+        margin-left: 5px;
+    }
+    
+    border: 1px solid map-get($colors, bw, 10);
+}
+
+.sv-order__payment__item:not(:last-of-type) {
+    border-bottom: none;
+}
+.sv-order__payment__item_active {
+    border: 2px solid map-get($colors, primary, 100);
+    border-bottom: 2px solid map-get($colors, primary, 100) !important;
 }

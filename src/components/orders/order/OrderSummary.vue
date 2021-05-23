@@ -2,7 +2,7 @@
     <div class="sv-order__summary">
         <section class="sv-order__summary__title">
             <span>{{ $attrs.title }}</span>
-            <div @click="editStep($attrs.step)" class="sv-order__summary__edit">
+            <div v-if="$attrs.step" @click="editStep($attrs.step)" class="sv-order__summary__edit">
                 <font-awesome-icon icon="pencil-alt" />
                 <span>Изменить</span>
             </div>
